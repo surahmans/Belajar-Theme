@@ -68,5 +68,6 @@
 		<div class="el_totop eltophide"><i class="fa fa-angle-up"></i></div>
 		<!-- <a href="#" class="scrollup"><i class="fa fa-chevron-up"></i></a> -->
 		<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+		<?php wp_footer(); ?>
 	</body>
 </html>
