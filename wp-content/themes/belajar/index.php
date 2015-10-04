@@ -326,7 +326,16 @@
 									<div class="seperator-post-bottom"></div>
 								</div>
 
-								
+								<?php 
+								if ( have_posts() ) {
+									while ( have_posts() ) {
+										the_post(); 
+										//
+										get_template_part('content');
+										//
+									} // end while
+								} // end if
+								?>
 
 								<!-- Pagination -->
 								<div class="wrap-pagination-index">
