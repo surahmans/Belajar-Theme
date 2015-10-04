@@ -1,20 +1,29 @@
+<?php
+	$post = get_post();
+	$thumb = get_post_thumbnail_id();
+	$image = wp_get_attachment_url($thumb, 'full');
+?>
 <!-- STANDARD POST -->
 								<div class="ol-content-post wow fadeInUp" data-wow-duration="0.4s">
 									<!-- all meta post -->
 									<div class="all-meta-post">
-										<div class="meta-post-date">08</div>
+										<div class="meta-post-date"><?php the_time('d'); ?></div>
 										<div class="meta-post-month">
-											March, 2015
+											<?php the_time('F, Y'); ?>
 											<span class="seperator-post">/</span>
-											<a href="#">3 Comments</a>
+											<a href="<?php the_permalink(); ?>"><?php comments_number('0 Comment', '1 Comment', '% Comments') ?></a>
 											<span class="seperator-post">/</span>
-											Posted By <a href="#">Zahira</a>
+											<?php _e('Posted By', 'belajar theme'); ?> <?php the_author_posts_link(); ?>
 										</div>
 									</div>
 									<!-- image post -->
 									<div class="wrap-image-post">
-										<a href="#">
+										<a href="<?php the_permalink(); ?>">
+											<?php if ($image) { ?>
+											<img src="<?php echo $image; ?>" alt="">
+											<?php } else { ?>
 											<img src="http://placehold.it/850x600" alt="">
+											<?php } ?>
 											<div class="overlay-image-post"></div>
 										</a>
 									</div>
@@ -26,12 +35,18 @@
 									</div>
 									<!-- title post -->
 									<div class="title-post">
-										<a href="#">In outer aspect, Pip and Dough-Boy made a match Lorem Ipsum</a>
+										<a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
 									</div>
 									<!-- desc post -->
 									<div class="desc-post">
 										<p>
-											Blorem Quisque id efficitur nibh, in volutpat erat. Morbi vel facilisis nulla, id posuere velit. Maecenas tempor lorem ut molestie malesuada. Nulla facilisi. Pellentesqu fermentum felis vel lacinia pulvinar, erat neque tincidunt sapien, sit amet varius lacus justo id nisi. Nunc euismod lacus lectus, ac ullamcorper neque lacinia eget justo consectetur egestas.Phasellus et odio et justo .Nunc euismod lacus lectus, ac ullamcorper neque lacinia eget justo consectetur egestas.Phasellus et odio et justo.just waiting for you to explore and discover its wonders. Gone are the days when women could not travel alone; these days all it takes is a passport and a sense of adventure for the single woman to achieve her dream of seeing the world.
+											<?php 
+												if (is_singular()) { 
+													the_content();
+												} else {
+													the_excerpt();
+												}
+											?>
 										</p>
 									</div>
 									<div class="read-share">
